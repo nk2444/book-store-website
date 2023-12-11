@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{%block title%}Home{%endblock title%}
+
+{%block body%}
+<div class=" container-fluid my-4">
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="static/img/jpg1.jpg" class="d-block w-100" alt="images" height="540">
+      </div>
+      <div class="carousel-item">
+        <img src="static/img/jpg2.webp" class="d-block w-100" alt="images" height="540">
+      </div>
+      <div class="carousel-item">
+        <img src="static/img/jpg3.avif" class="d-block w-100" alt="images" height="540">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<div class=" container-fluid my-4"></div>
+<div class="container my-3">
+  <h1 class="my-2"> Buy Books which You Like:</h1>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
+
+    {% for n in products %}
+    <div class="col">
+      <div class="card shadow-sm">
+        <img src="media/{{n.image}}" class="d-block w-70" alt="images" height="150">
+        <div class="card-body">
+          <p class="card-text">{{n.book_title}}</p>
+        
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button id="pr{{n.id}}" type="button" class="btn btn-sm btn-outline-secondary cart">Add to cart</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">{{n.price}}rs</button>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+    {% endfor %}
+    {%endblock body%}
+
+    {% block js %}
+    <script>
+      console.log('working');
+      if (localStorage.getItem('cart') == null) {
+        var cart = {};
+      }
+      else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
+      }
+      $('.cart').click(function () {
+
+        console.log('clicked');
+        var idstr = this.id.toString();
+        console.log(idstr);
+       if (cart[idstr] != undefined) {
+          cart[idstr] = cart[idstr] + 1;
+           }
+        else
+         {
+          cart[idstr] = 1;
+         }
+        console.log(cart);
+        localStorage.setItem('cart', JSON.stringify('cart'));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
+       });
+       $('#popcart').popover('show');
+       document.getElementById("popcart").setAttribute('data-bs-content','<h5>Cart</h5>');
+       </script>
+    
+{% endblock %}
+

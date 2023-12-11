@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border;
+    font-family: 'montserrat';
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+#cursor{
+    height: 25px;
+    width: 25px;
+    background-color: #95c11e;
+    border-radius:50%;
+    position: fixed;
+    z-index: 99;
+
+}
+#about-us {
+    height: 40vh;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    padding: 0 50px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#about-us img{
+    
+    height: 220px;
+    width: 250px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+#about-us-in{
+    width: 100%;
+    text-align: center;
+}
+
+#about-us-in h3{
+    font-size: 54px;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+#about-us-in p{
+    text-align: center;
+    font-size: 20px;
+    line-height: 26px;
+}
