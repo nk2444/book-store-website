@@ -1,9 +1,3 @@
-echo " BUILD START"
-python 3.12.0 pip install -r requirements.txt
-
-echo " MAKEMIGRATION...."
-python 3.12.0 manage.py makemigrations --noinput --
-python 3.12.0 manage.py migrate--noinput --noinput
-
-python 3.12.0 manage.py collectstatic --noinput --clear
-echo " BUILD END"
+# build_files.sh
+pip install -r requirements.txt
+python3.9 manage.py collectstatic
