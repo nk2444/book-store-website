@@ -8,6 +8,7 @@ from home.models import Product, Author
 
 
 # Create your views here.
+params=None
 def index(request):
     products=Product.objects.all()
     for a in products:
@@ -37,6 +38,7 @@ def product(request):
             products=Product.objects.all()
      for a in products:
       print(a.book_title, a.image, a.price)
+      params=None
 #     print(products)
       params={'products':products}
       return render(request,'product.html',params)
@@ -58,8 +60,10 @@ def contact(request):
 
 def search(request):    
            products=Product.objects.all()
+           
            if request.method=="GET":
-                 vr=request.GET.get('query')     
+                 vr=request.GET.get('query') 
+                 params=None    
                  if vr!= None:
                   products=Product.objects.filter(book_title__icontains=vr)
                   params={'products':products}
