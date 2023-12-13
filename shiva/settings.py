@@ -78,12 +78,28 @@ WSGI_APPLICATION = 'shiva.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '23*D*GB632CcAffFe1Fe6G2cd6gBf442',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'PORT': '54486',
+
+       
     }
 }
+
+
 
 
 # Password validation
